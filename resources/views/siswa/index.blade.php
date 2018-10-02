@@ -21,7 +21,8 @@
 					<td>
 						<a href="{{ url('siswa/'.$siswa->id.'/edit') }}"><button>Edit</button></a>
 						{{ Form::open(['method' => 'DELETE', 'route' => ['siswa.destroy', $siswa->id]]) }}
-						
+						{{ Form::submit('Delete') }}
+						{{ Form::close() }}
 					</td>
 				</tr>
 			@endforeach

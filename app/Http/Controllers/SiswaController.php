@@ -39,10 +39,10 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $data           = new Siswa();
-        $data->nama     = $request->get('name');
-        $data->umur      = $request->get('age');
-        $data->alamat = $request->get('address');
+        $data               = new Siswa();
+        $data->nama         = $request->get('name');
+        $data->umur         = $request->get('age');
+        $data->alamat       = $request->get('address');
         $data->save();
         return redirect('siswa');
     }
@@ -66,7 +66,8 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $siswa = Siswa::find($id);
+        return view('siswa.update', compact('siswa'));
     }
 
     /**
@@ -78,7 +79,15 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data = Siswa::find($id);
+        
+        $data->nama         = $request->get('name');
+        $data->umur         = $request->get('age');
+        $data->alamat       = $request->get('address');
+        $data->save();
+        
+        return redirect('siswa');
     }
 
     /**
@@ -89,6 +98,8 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Siswa::find($id);
+        $data->delete();
+        return redirect('siswa');
     }
 }
